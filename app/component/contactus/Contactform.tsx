@@ -1,37 +1,113 @@
 "use client"
-import { MapPin, PhoneCall, Mail, Linkedin  } from 'lucide-react';
-export default function Contactform(){
+import { MapPin, PhoneCall, Mail, Linkedin } from 'lucide-react';
+import { useState } from "react"
+import { toast } from "react-hot-toast";
+export default function Contactform() {
+  
+  // delcare varibales for catching values from controls on the form
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  // show Toast
+  function showToast() {
+    toast.custom((t) => (
+      <div className="w-full max-w-full bg-green-600 text-white py-4 px-6 flex items-center justify-between shadow-2xl text-xl rounded-2xl">
+        {/* Message */}
+        <div className="text-center flex-1">
+            Thanks for contacting us! We will be in touch with you shortly.
+        </div>
+
+        {/* Cclose button for this toast */}
+        <button
+          onClick={() => toast.dismiss(t.id)}
+          className="text-white text-2xl font-bold ml-4 hover:text-gray-300"
+        >
+          ×
+        </button>
+      </div>
+    ), {
+      duration: Infinity, 
+      position: 'top-center', 
+    });
+  }
+
+  // Handle to submit form
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const res = await fetch('/api/contactus', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fullName, email, subject, message }),
+    });
+
+    // check if the message is sent 
+       if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        showToast();
+        setFullName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      } else {
+         // cannot send this message
+         toast.custom((t) => (
+          <div className="w-full max-w-full bg-red-600 text-white py-4 px-6 flex items-center justify-between shadow-lg text-xl rounded-md">
+            <div className="text-center flex-1">
+              Failed to send message. Please try again!
+            </div>
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="text-white text-2xl font-bold ml-4 hover:text-gray-300"
+            >
+              ×
+            </button>
+          </div>
+        ), {
+          duration: Infinity,
+          position: 'top-center',
+        });
+      }
+  }
+
   return (
     <div className="flex flex-col lg:flex-row gap-2 items-stretch w-full">
       {/* Send us a message */}
       <div className="flex-1 flex-col items-center justify-between mt-5 mb-5">
-    <form className="h-[620px] space-y-6 px-2 sm:p-8 md:p-8 lg:mx-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700" action="#">
-          <br></br>
+    <form  onSubmit={handleSubmit} className="h-[620px] space-y-6 px-2 sm:p-8 md:p-8 lg:mx-10 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700" action="#">
+          <br />
           <h5 className="text-center font-bold text-xl text-gray-900 dark:text-white">Send Us a Message</h5>
         <div>
-            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name *</label>
-            <input type="name" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+            <label htmlFor="fullName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name *</label>
+            <input type="name" name="fullName" id="fullName" value={fullName}
+              onChange={(e) => setFullName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="your full name" required />
         </div>
         <div>
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Address *</label>
-            <input type="email" name="email" id="email"  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+            <input type="email" name="email" id="email"  value={email}
+              onChange={(e) => setEmail(e.target.value)}  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
             </div>
         <div>
             <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
-            <input type="text" name="subject" id="subject" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+            <input type="text" name="subject" id="subject" value={subject}
+              onChange={(e) => setSubject(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
             </div>
             <div>
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-            <textarea id="message" rows={4} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+            <textarea id="message" rows={4}   value={message}
+              onChange={(e) => setMessage(e.target.value)} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
             </div>
         <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Send Message</button>
-          <br></br>
+          <br/>
         </form>
       </div>
       {/* Contact info */}
       <div className="flex-1  flex-col items-center justify-between mt-5 mb-5">
     <form className="h-[620px] space-y-6 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700" action="#">
-    <br></br> 
+    <br/> 
           <h5 className="text-center font-bold text-xl text-gray-900 dark:text-white">Contact Information</h5>
         {/* address */}
             <div className="flex flex-row gap-2 px-5">
@@ -82,7 +158,7 @@ export default function Contactform(){
                 <p>CIPA@Linkedin</p>
               </div>
           </div>
-          <br></br>
+          <br/>
     </form>
       </div>
     </div>

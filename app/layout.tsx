@@ -6,6 +6,7 @@ import "./globals.css";
 import { NavBarComponent } from "./component/Navbar";
 import { Lora } from "next/font/google";
 import CipaFooter from "./component/Footer";
+import { Toaster } from 'react-hot-toast';
 
 const lora = Lora({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
         <NavBarComponent />
         {children}
         <CipaFooter />
+        <Toaster/>
       </body>
     </html>
   );

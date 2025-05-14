@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CipaFooter() {
   return (
@@ -45,18 +46,14 @@ export default function CipaFooter() {
         <div className="flex flex-col gap-3">
           <h3 className="text-lg font-semibold">Follow Us</h3>
           <div className="flex gap-4 text-xl">
-            <a href="#" className="hover:text-yellow-400">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="hover:text-yellow-400">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="hover:text-yellow-400">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="hover:text-yellow-400">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
+          <Link
+              href="https://www.linkedin.com/in/juanitadesouzahuletey/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-400"
+            >
+        <i className="fab fa-linkedin-in"></i>
+      </Link>
           </div>
         </div>
       </div>
