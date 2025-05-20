@@ -4,8 +4,7 @@ import Image from "next/image";
 
 const programs = [
   { title: "Advocacy", color: "bg-[#6B0000]", border: "border-[#6B0000]", path: "/images/advocacy.png" },
-  { title: "Mentor", color: "bg-[#F59E0B]", border: "border-[#F59E0B]", path: "/images/mentor.png" },
-  { title: "Coaching", color: "bg-[#065F46]", border: "border-[#065F46]", path: "/images/coaching.png" },
+  { title: "Training", color: "bg-[#F59E0B]", border: "border-[#F59E0B]", path: "/images/mentor.png" },
   { title: "Community & Resources", color: "bg-[#1D4ED8]", border: "border-[#1D4ED8]", path: "/images/community.png" },
   { title: "Education", color: "bg-[#DC2626]", border: "border-[#DC2626]", path: "/images/education.png" },
   { title: "Scholarship", color: "bg-[#000000]", border: "border-[#000000]", path: "/images/scholarship.png" },

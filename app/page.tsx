@@ -4,8 +4,8 @@ import MissionSection from "./component/MissionSection";
 import ProgramsSection from "./component/ProgramsSection";
 import CoachingSection from "./component/CoachingSection";
 import ImpactPartnersSection from "./component/ImpactPartnersSection";
-import ApplyProgramsSection from "./component/ApplyProgramsSection";
 import CIPAtripe from "./component/cipatripes";
+import GoogleForm from "./component/GoogleForm";
 export default function Home() {
   return (
     <main>
@@ -34,7 +34,8 @@ export default function Home() {
       <CIPAtripe />
 
       {/* apply area  */}
-      <ApplyProgramsSection />
+      {/* <ApplyProgramsSection /> */}
+      <GoogleForm />
       <CIPAtripe />
     </main>
   );
