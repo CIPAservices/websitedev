@@ -21,7 +21,7 @@ export default function ContactUs() {
         <h2 className="font-bold p-5 text-3xl">Get In Touch</h2>
         <h4 className="p-5">
           <blockquote>
-          We'd love to hear from you. Please fill out the form below or reach
+          We&lsquo;d love to hear from you. Please fill out the form below or reach
           out directly.
           </blockquote>
         </h4>

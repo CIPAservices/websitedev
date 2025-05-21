@@ -9,12 +9,11 @@ export default function Jointeam() {
     Join Our Team
   </h2>
   <Blockquote className="text-white mb-6">
-    We're always looking for passionate people to help us achieve our mission
+    We are always looking for passionate people to help us achieve our mission
   </Blockquote>
   <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2 px-5 rounded-lg transition-colors">
     View Opportunities
   </button>
 </section>
-
   );
 }
