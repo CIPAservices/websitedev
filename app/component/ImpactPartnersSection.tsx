@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { CircleTextAnimation } from "../component/CircleTextAnimation";
 // Counter Component
 function Counter({ end, suffix = "", duration = 2000, startCounting }: { end: number; suffix?: string; duration?: number; startCounting: boolean }) {
   const [count, setCount] = useState(0);
