@@ -54,12 +54,12 @@ export function NavBarComponent() {
         >
           Programs
         </NavbarLink>
-        <NavbarLink
+        {/* <NavbarLink
           href="#"
           className="text-yellow-400 md:text-white font-[var(--font-lora)] hover:text-yellow-300 md:hover:text-yellow-300 transition-colors duration-300"
         >
           Coaching
-        </NavbarLink>
+        </NavbarLink> */}
         <NavbarLink
           href="/contactus"
           className="text-yellow-400 md:text-white font-[var(--font-lora)] hover:text-yellow-300 md:hover:text-yellow-300 transition-colors duration-300"
