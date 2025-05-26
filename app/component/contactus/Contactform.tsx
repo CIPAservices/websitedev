@@ -83,17 +83,17 @@ export default function Contactform() {
         <div>
             <label htmlFor="fullName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name *</label>
             <input type="name" name="fullName" id="fullName" value={fullName}
-              onChange={(e) => setFullName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="your full name" required />
+              onChange={(e) => setFullName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Your full name" required />
         </div>
         <div>
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Address *</label>
             <input type="email" name="email" id="email"  value={email}
-              onChange={(e) => setEmail(e.target.value)}  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+              onChange={(e) => setEmail(e.target.value)}  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Your email"  required />
             </div>
         <div>
             <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
             <input type="text" name="subject" id="subject" value={subject}
-              onChange={(e) => setSubject(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
+              onChange={(e) => setSubject(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Your subject" required />
             </div>
             <div>
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
@@ -118,8 +118,8 @@ export default function Contactform() {
               </div>
               <div>
                 <b className="font-bold">Address</b>
-                <p>123 Main Street</p>
-                <p>City, State 12345</p>
+                <p>304 Barlow Crescent</p>
+                <p>Winnipeg, Manitoba, R2N 3W4</p>
               </div>
             </div>
             {/* phone */}
@@ -131,7 +131,7 @@ export default function Contactform() {
               </div>
               <div>
                 <b className="font-bold">Phone</b>
-                <p>(123) 456-7890</p>
+                <p>(+1) 204 510 6261</p>
               </div>
             </div>
             {/* email */}
@@ -143,7 +143,7 @@ export default function Contactform() {
               </div>
               <div>
                 <b className="font-bold">Email</b>
-                <p>cipa@org.com</p>
+                <p>jhuletey@mycipa.org</p>
               </div>
             </div>
             {/* follow us */}
